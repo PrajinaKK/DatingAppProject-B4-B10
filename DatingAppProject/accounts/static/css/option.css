@@ -1,0 +1,60 @@
+body {
+            background-image: url('/static/images/backgroundimg.jpg');
+            background-position: center -100%;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width : 335px;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            top: 3; /* Moves the container to the top of the parent */
+            background-color: white;
+            max-width: 420px;
+            width : 335px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+             position: fixed;
+    top: 90px; /* 10px from the bottom of the viewport */
+    right: 600px;
+        }
+        .heading {
+            font-size: 26px;
+            text-align: center;
+            left:10px;
+            margin-bottom: 20px;
+        }
+        .form-check {
+            margin-bottom: 20px;
+            flex: 1; /* Allows the left side to take up available space */
+            margin-right: 20px; /* Space between left and right side */
+        }
+        .option {
+            display: block;
+            margin: 20px 0;
+        }
+.link-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    width:230px;
+    text-align: center;
+    color: #fff;
+    background-color: black; /* Button background color */
+    text-decoration: none; /* Remove underline from link */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #007bff; /* Border matching the background */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.link-button:hover {
+    background-color: #0056b3; /* Darker background on hover */
+    color: #e6e6e6; /* Change text color on hover */
+}

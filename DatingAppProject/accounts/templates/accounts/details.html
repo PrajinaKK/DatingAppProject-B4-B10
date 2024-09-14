@@ -1,0 +1,223 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+<!--   {% load static %}-->
+<!--        <link rel="stylesheet" href="static/css/style.css">-->
+
+<style>
+    body {
+        background-image: url("{% static 'images/backgroundimg.png' %}");
+        background-position: center -60%;
+   
+            align-items: center;
+            height: 100vh;
+            background-size: auto;
+            background-repeat: no-repeat;
+            width :500px;
+            }
+
+        .container {
+background-color: white;
+            width: 320px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            line-height: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     position: absolute;
+    top: 20px; /* 10px from the bottom of the viewport */
+    right: 500px;
+}
+
+
+
+.link {
+    color: darkmagenta
+}
+
+ .personal-details-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .personal-details-form label {
+            margin: 1px 0 0px;
+            font-weight: bold;
+        }
+
+        .personal-details-form input {
+           padding: 0px;
+           margin-bottom: 20px;
+           border: 1px solid #ccc;
+           border-radius: 4px;
+           width: 100%;
+           padding-right: 40px; /* Adjust to make space for the icon */
+           padding-left: 10px; /* Optional: padding for the text */
+           height: 40px;
+           box-sizing: border-box;
+        }
+
+         .form-group {
+    margin-bottom: 15px;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    right: 10px; /* Align icon to the right */
+    height: 24px; /* Adjust the size of the icon */
+    width: 24px; /* Adjust the size of the icon */
+    border: none;
+    border-radius: 50%;
+    outline: none;
+}
+
+        .input-wrapper input {
+            width:100%;
+            padding: 6px 0px;
+            }
+        .input-wrapper svg {
+             position:absolute;
+             right: 5px;
+             top: 20px;
+             transform: translateY(-40%);
+        }
+
+
+        .btn-dark {
+    background-color: rgb(107, 3, 107);
+    /* border-radius: 35px; */
+}
+  .link-button {
+    display: inline-block;
+    padding: 20px 20px;
+    font-size: 16px;
+    width:290px;
+    height:40px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.5;
+    cursor: pointer;
+
+    color: #fff;
+    background-color: black; /* Button background color */
+    text-decoration: none; /* Remove underline from link */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #007bff; /* Border matching the background */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.link-button:hover {
+    background-color: #0056b3; /* Darker background on hover */
+    color: #e6e6e6; /* Change text color on hover */
+}
+
+
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <h3 class="head">
+            <center> Personal Details</center>
+        </h3>
+        <form class="personal-details-form" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="form-group">
+                <label for="age"></label>
+                <input type="number" id="age" name="age" placeholder="Age">
+            </div>
+            <div class="form-group">
+               <label for="dob"></label>
+               <input  id="dob" name="dob" placeholder="DOB">
+            </div>
+            <div class="form-group">
+                <label for="hobbies"></label>
+                <input  type="text" id="hobbies" name="hobbies"  placeholder="Hobbies"></input>
+            </div>
+            <div class="form-group">
+               <label for="interests"></label>
+               <input  type="text" id="interests" name="interests"  placeholder="Interest"></input>
+            </div>
+            <div class="form-group">
+                <label for="smoking"></label>
+                <input type="text" id="smoking" name="smoking" placeholder="Smoking Habit" >
+            </div>
+             <div class="form-group">
+               <label for="drinking"></label>
+               <input type="text" id="drinking" name="drinking" placeholder="Drinking Habit" >
+
+            </div>
+            <div class="form-group">
+                <label for="qualification"></label>
+                <input type="text" id="qualification" name="qualification" placeholder="Qualification" >
+            </div>
+
+            <!-- Profile Picture -->
+    <div class="form-group">
+        <label for="Profile Pic"></label>
+      <div class="input-wrapper">
+        <input type="text" id="Profile Pic" name="" placeholder="Profile Pic">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
+            <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+            <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z"/>
+        </svg>
+    </div>
+    </div>
+
+        <!-- Add More Images -->
+       <div class="form-group">
+       <label for="additional_images"></label>
+       <div class="input-wrapper">
+           <input  type="text" id="additional_images" name="additional_images" accept="image/*" placeholder="Add More Images" multiple>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
+            <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+            <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2
+            2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z"/>
+            </svg>
+       </div>
+       </div>
+        <!-- Short Reels -->
+    <div class="form-group">
+    <label for="short-reel"></label>
+    <div class="input-wrapper">
+        <input type="text" id="short-reel" name="short-reel" placeholder="Short Reel">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+             class="bi bi-camera-video" viewBox="0 0 16 16">
+             <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16
+             4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/>
+        </svg>
+    </div>
+    </div>
+
+
+
+    <a href="#" class="link-button">Next</a>
+        </form><br><br><br>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-kxg7oryz1$@cc_n4goy%vtya!f7a@pl@nersasg-1ig3-)x5fg
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
 
@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts'
+]
+AUTHENTICATION_BACKENDS = [
+    'accounts.backends.EmailOrMobileBackend',  # Custom backend
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
 ]
 
 MIDDLEWARE = [
@@ -80,6 +84,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
@@ -131,3 +136,4 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.User'
+

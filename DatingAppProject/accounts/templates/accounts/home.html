@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<style>
+    body {
+        font-family: "Play", sans-serif;
+        font-style: normal;
+    }
+
+     .container {
+        height: 100%;
+        width: 330px; 
+        line-height: normal;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <form>
+            <img class="profile" src="{% static 'images/profile.png' %}" height="300px" width="300px" style="right: 10px;"><br>
+            <h2 class="head2">
+                <center>Let meeting new people around you</center><br>
+            </h2>
+            <a href="{% url 'accounts:login' %}"type="submit" class="btn btn-dark custom-white-btn1 btn-block">
+                <img src="{% static 'images/icons8-phone-100.png' %}" alt="call" height="30px" width="40px" class="call">
+                Login with Email/Phone</a><br>
+            <button type="button" class="btn btn-dark custom-white-btn btn-block">
+                <img src="{% static 'images/google.svg' %}" alt="Google" height="20px" width="20px" class="google"> Login with Google
+            </button>
+            <center><p class="footer">Don't have an account? <a href="{% url 'accounts:signup' %}" class="link">Sign up</a></p></center>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

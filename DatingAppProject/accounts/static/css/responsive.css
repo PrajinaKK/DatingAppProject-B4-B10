@@ -1,0 +1,31 @@
+@media (min-width: 514px){
+    .container{
+        height: 87vh;
+    }
+}
+
+@media (min-width: 1200px){
+    .container{
+        margin-right: 0;
+        margin-left: 0;
+        padding: 0 10px;
+        height: 60vh;
+    }
+    .home-opt-section{
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+    footer{
+        position: sticky;
+        bottom: 10px;
+    }
+    .nav-bar-bottom{
+        margin: 0px 365px;
+        position: relative;
+        bottom: -130px;
+    }
+    .bottom-nav{
+        margin-top: 0px;
+    }
+}
