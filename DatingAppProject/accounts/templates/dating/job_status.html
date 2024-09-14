@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox Navigation</title>
+   {% load static %}
+    <link rel="stylesheet" href="{% static 'css/job_status.css' %}">
+</head>
+<body>
+    <div class="container">
+        <center><h2>Job Status</h2></center><br>
+        <div class="checkbox-group">
+            <label><input type="checkbox" id="employee" name="role"> Employee</label>
+            <label><input type="checkbox" id="employer" name="role"> Employer</label>
+            <label><input type="checkbox" id="jobseeker" name="role"> Jobseeker</label>
+        </div>
+            <button onclick="navigate()">Next</button>
+        <div id="error-message" class="error"></div>
+    </div>
+
+    <script>
+        function navigate() {
+            var employee = document.getElementById("employee");
+            var employer = document.getElementById("employer");
+            var jobseeker = document.getElementById("jobseeker");
+            var errorMessage = document.getElementById("error-message");
+
+            // Clear previous error message
+            errorMessage.textContent = "";
+
+            var selectedCount = 0;
+            var selectedPage = "";
+
+            if (employee.checked) {
+                selectedCount++;
+                selectedPage = "http://127.0.0.1:8000/job_details";
+            }
+            if (employer.checked) {
+                selectedCount++;
+                selectedPage = "http://127.0.0.1:8000/job_details";
+            }
+            if (jobseeker.checked) {
+                selectedCount++;
+                selectedPage = "http://127.0.0.1:8000/job_seeker";
+            }
+
+            if (selectedCount === 0) {
+                errorMessage.textContent = "Please select a role before proceeding.";
+            } else if (selectedCount > 1) {
+                errorMessage.textContent = "Please select only one option.";
+            } else {
+                window.location.href = selectedPage;
+            }
+        }
+    </script>
+</body>
+</html>

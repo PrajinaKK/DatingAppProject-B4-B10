@@ -1,0 +1,236 @@
+body {
+    background-image: url('/static/image/background.jpg');
+    background-position: center 120%  ;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: auto;
+    background-repeat: no-repeat;
+
+    }
+
+.container {
+background-color: white;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+width: 320px;
+padding: 20px;
+margin-top: 20px;
+line-height: 10px;
+}
+
+form h2 {
+text-align: center;
+margin-bottom: 20px;
+}
+
+.form-control {
+width: 100%;
+padding: 10px;
+margin-bottom: 15px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 16px;
+color: #D3D3D3;
+}
+
+
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    height:30px;
+    margin-bottom: 15px;
+}
+
+button:hover {
+    background-color: #333; /* Slight change on hover */
+}
+
+
+ul {
+list-style-type: none; /* Removes bullet points */
+padding-left: 0; /* Removes any left padding */
+margin: 0; /* Removes any margins */
+}
+
+select.form-control {
+height: auto; /* Ensure the height adjusts based on content */
+padding-top: 10px; /* Adjust padding to center text */
+padding-bottom: 10px; /* Adjust padding to center text */
+line-height: 1.5; /* Adjust line height for better text alignment */
+font-size: 16px; /* Adjust font size if needed */
+box-sizing: border-box; /* Ensure padding is included in height calculation */
+}
+
+
+
+.file label {
+display: flex;
+color: #D3D3D3;
+padding: 0.9rem;
+font-family: sans-serif;
+border: 1px solid #ced4da;
+border-radius: 0.3rem;
+cursor: pointer;
+margin-top: 1rem;
+}
+
+  
+.file-icon svg {
+    position:absolute;
+    right: 620px;
+    top: 555px;
+   transform: translateY(40%);
+      }
+
+
+.more-file-icon svg {
+    position:absolute;
+    right: 620px;
+    top: 610px;
+   transform: translateY(40%);
+      }
+.reel-icon svg {
+    position:absolute;
+    right: 620px;
+    top: 658px;
+   transform: translateY(40%);
+      }
+
+.button {
+    margin-bottom: 15px; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+body {
+    background-image: url('/static/image/background.jpg');
+    background-position: center 120%  ;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: auto;
+    background-repeat: no-repeat;
+
+    } 
+
+.container {
+background-color: white;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+width: 320px;
+padding: 20px;
+margin-top: 20px;
+line-height: 10px;
+}
+
+form h2 {
+text-align: center;
+margin-bottom: 20px;
+}
+
+.form-control {
+width: 100%;
+padding: 10px;
+margin-bottom: 15px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 16px;
+color: #D3D3D3;
+}
+
+button {
+width: 300px;
+padding: 15px;
+border: none;
+border-radius: 5px;
+font-size: 16px;
+cursor: pointer;
+margin-bottom: 10px;
+}
+
+button#register-btn {
+background-color: #000;
+color: #fff;
+}
+
+ul {
+list-style-type: none; 
+ padding-left: 0; 
+ margin: 0; 
+} */
+ 
+/* select.form-control {
+height: auto; 
+ padding-top: 10px; 
+ padding-bottom: 10px; 
+ line-height: 1.5; 
+ font-size: 16px; 
+ box-sizing: border-box; 
+}  */
+
+
+
+/* Style the container and form elements */
+
+/* 
+.file {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 300px;
+    height:50px;
+    box-sizing: border-box;
+} 
+
+.file label {
+    display: flex;
+    color: #D3D3D3;
+    padding: 0.9rem;
+    font-family: sans-serif;
+    border: 1px solid #ced4da;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    flex-grow: 1;
+    } 
+ 
+.file-icon, .more-file-icon, .reel-icon {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    width: 50px;
+    height: 50px;
+}
+  */

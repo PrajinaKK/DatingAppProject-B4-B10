@@ -1,0 +1,71 @@
+body {
+    background-image: url('/static/image/background.jpg');
+    background-position: center 120%  ;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: auto;
+    background-repeat: no-repeat;
+
+    }
+
+.container {
+    position: absolute;
+    top:170px;
+    right: 600px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    padding: 20px;
+    margin-top: -20px;
+    line-height: 10px;
+}
+
+form h2 {
+text-align: center;
+margin-bottom: 20px;
+}
+
+.form-control {
+width: 250px;
+padding: 15px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 10px;
+font-size: 16px;
+}
+
+button {
+width: 100%;
+padding: 15px;
+border: none;
+border-radius: 10px;
+font-size: 16px;
+cursor: pointer;
+margin-bottom: 10px;
+}
+
+button#register-btn {
+background-color: #000;
+color: #fff;
+}
+
+ul {
+list-style-type: none; /* Removes bullet points */
+padding-left: 0; /* Removes any left padding */
+margin: 0; /* Removes any margins */
+}
+
+select.form-control {
+height: auto; /* Ensure the height adjusts based on content */
+padding-top: 15px; /* Adjust padding to center text */
+padding-bottom: 10px; /* Adjust padding to center text */
+line-height: 2; /* Adjust line height for better text alignment */
+font-size: 16px; /* Adjust font size if needed */
+box-sizing: border-box; /* Ensure padding is included in height calculation */
+}
+
+input::before {
+content: none; /* Ensure there's no content added before the input field */
+}
