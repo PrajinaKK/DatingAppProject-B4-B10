@@ -25,6 +25,9 @@ urlpatterns=[
     path('send_connection_request/<int:user_id>/', SendConnectionRequestView.as_view(), name='send_connection_request'),
     path('accept_connection_request/<int:request_id>/', AcceptConnectionRequestView.as_view(), name='accept_connection_request'),
     path('decline_connection_request/<int:request_id>/', DeclineConnectionRequestView.as_view(), name='decline_connection_request'),
+
+    path('message/', ChatListView.as_view(), name='message'),
+    path('messages/<int:receiver_id>/', ChatRoomView.as_view(), name='chat-room'),
 ]
 
 

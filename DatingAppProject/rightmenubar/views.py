@@ -6,6 +6,7 @@ from .models import *
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.contrib import messages
+from django.db.models import Q
 
 
 
@@ -182,3 +183,58 @@ class ShortListedByView(LoginRequiredMixin, View):
         }
 
         return render(request, self.template_name, context)
+    
+
+class ChatListView(ListView):
+    template_name = 'right_menu/messages.html'
+    context_object_name = 'accepted_users'
+    
+    def get_queryset(self):
+        # Get all users with accepted connection requests
+        accepted_connections = ConnectionRequest.objects.filter(
+            (Q(sender=self.request.user) | Q(receiver=self.request.user)) &
+            Q(status=ConnectionRequest.ACCEPTED)
+        )
+        print("aaaaaaaaaaaaaa",accepted_connections)
+
+        # Extract the users related to accepted requests
+        accepted_users = []
+        for connection in accepted_connections:
+            if connection.sender == self.request.user:
+                accepted_users.append(connection.receiver)
+            else:
+                accepted_users.append(connection.sender)
+        print(accepted_users)
+
+        return accepted_users
+
+
+# Load the chat room and messages
+class ChatRoomView(View):
+    def get(self, request, *args, **kwargs):
+        receiver_id = self.kwargs.get('receiver_id')
+        print(receiver_id)
+        receiver = get_object_or_404(User, id=receiver_id)
+        print("receiver",receiver)
+        
+        # Create or get chat room between two users
+        room_name = self._get_room_name(request.user.id, receiver.id)
+        chat_room, created = ChatRoom.objects.get_or_create(name=room_name)
+        
+        # Get the previous messages in the chat room
+        messages = ChatMessage.objects.filter(room=chat_room).order_by('timestamp')
+        
+        return JsonResponse({
+            'messages': [
+                {
+                    'sender': message.user.username,
+                    'message': message.message,
+                    'timestamp': message.timestamp.strftime('%Y-%m-%d %H:%M:%S')
+                }
+                for message in messages
+            ]
+        })
+    
+    def _get_room_name(self, sender_id, receiver_id):
+        # Ensure room name is consistently generated based on user IDs
+        return 'chat_' + str(min(sender_id, receiver_id)) + '_' + str(max(sender_id, receiver_id))
