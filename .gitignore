@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,visualstudiocode,venv,database
 
 ### Database ###
+.vscode
 migrations
 info.txt
 __pycache__
