@@ -5,6 +5,8 @@ from . models import UserPreference
 from accounts.models import User
 
 # Create your views here.
+class StoryView(TemplateView):
+    template_name = "story.html"
 
 class HomeView(ListView):
     model=User

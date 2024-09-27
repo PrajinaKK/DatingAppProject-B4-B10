@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY STORY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="{% static 'story/css/style.css' %}">
+   
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="background-container">
+            <div class="row">
+                <img src="{% static 'story/img/im.jpeg' %}" alt="" style="width: 700px;height: 100vh;position: absolute;">
+                <div class="profile-info">
+                    <a href="{% url 'userhome:home1' %}"><i class="fa-solid fa-arrow-left"></i></a>
+                    <img src="{% static '/story/img/life.jpeg' %}" alt="Profile Picture">
+                    <div class="status"></div>
+                    <div class="profile-name">Stone Stellar
+                        <h6 style="color:green">online</h6>
+                    </div>
+                    
+                </div>
+                <div class="info-container">
+                    <div class="sound-bar">
+                        <input type="range" min="0" max="100" value="50">
+                        <span style="height: 10px;"></span>
+                        
+                        <i class="fa-solid fa-volume-high" style="color:white;font-size: 23px;"></i>
+                    </div>
+
+                    <div class="hashtag"><h1># Night sky Time</h1></div>
+
+                    <div class="buttons">
+                        <button class="btn btn-new" style="color:white">NEW <i class="fa-regular fa-message" style="color:white"></i></button>
+                        <button class="btn btn-cancel btn-circle"><i class="fa-solid fa-xmark" style="color:white"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        
+       
+    </div>
+    
+
+
+    
+    <script src="https://kit.fontawesome.com/648d5aac71.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   
+</body>
+</html>

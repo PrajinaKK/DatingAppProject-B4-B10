@@ -47,11 +47,17 @@
       height: 30px;
       font-size: 20px;
     }
-    .fa-thumbs-up:hover{
-      color: #641259;
-      
+    /*-----------------------------THUMBS UP PART----------------------------------------*/
+   
+    .icon-selected > .like .fa-thumbs-up{
+      color:#641259;
       
     }
+    .icon:not(.icon-selected) > .like .fa-thumbs-up:hover{
+      color:#d368c5;
+    }
+
+    /*---------------------------THUMBS UP PART-------------------------------------------*/
     .profile .overlay-text {
       position: relative;
       width:100%;
@@ -63,10 +69,11 @@
 
     } 
 
-    .clicked {
-            color: #008CBA; /* Color change to blue on click */
-            transform: scale(1.2); /* Slight scale animation */
-        }
+
+    /* .clicked {
+            color: #008CBA; /* Color change to blue on click 
+            transform: scale(1.2); /* Slight scale animation 
+        } */
     @media screen and (max-width: 455px){
       body{
         width: 500px;
@@ -227,6 +234,29 @@
       max-width: 100%; /* Full width on smaller screens */
     }
   }
+  @media screen and (max-width: 675px){
+    .profile-container-left {
+      width: 50%;
+      padding-left: 0px;
+    }
+    .profile-container-right {
+      width: 50%;
+    }
+  }
+  @media screen and (max-width: 581px){
+    .profile .overlay-text .action-icons {
+        margin-left: 160px;
+    }
+  }
+  @media screen and (max-width:440px){
+    .profile {
+    
+    width: 190px;
+   }
+   .profile .overlay-text .action-icons {
+        margin-left: 140px;
+    }
+  }
   p{
     transform: translateY(-7px);
   }
@@ -272,7 +302,7 @@
           {% for story in all_user %}
           <div class="story">
             <div class="story-circle">
-                <button type="button"><img src="{{story.profile_pic.url}}" alt=""></button>
+                <a href="{% url 'userhome:story' %}"><button type="button"><img src="{{story.profile_pic.url}}" alt=""></button></a>
             </div>
             <span class="user-name">{{story.username}}</span>
           </div>
@@ -363,7 +393,7 @@
               <!-- <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
                 Popover on right
               </button> -->
-              <div class="icon"><button type="button" class="like"><i class="fa-solid fa-thumbs-up"></i></button></div>
+              <div class="icon icon-selected"><button type="button" class="like"><i class="fa-solid fa-thumbs-up"></i></button></div>
               <div class="icon"><a href="#"><button type="button" ><i class='bx bxs-message-rounded'></i></button></a></div>
               <div class="icon"><button type="button"><i class='bx bx-dots-horizontal-rounded'></i></button></div>
             </div>
@@ -666,12 +696,14 @@
             defaultTab.click();
         }
       });
+      //thumbs up part
+      document.querySelectorAll(".icon").forEach(icon =>{
+        icon.addEventListener("click", function(){
+          icon.classList.toggle("icon-selected");
+        });
+      })
 
-      document.getElementsByClassName(".fa-thumbs-up").addEventListener("click", function () {
-        this.classList.toggle("clicked");
-      });  
       
-
   </script>
 
 
