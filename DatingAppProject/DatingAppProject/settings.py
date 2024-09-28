@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'rightmenubar',
-    # 'payment',
-    # 'userflow',
-    # 'userhome'
+    'payment',
+    'userflow',
+    'userhome'
 ]
 AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailOrMobileBackend',  # Custom backend
