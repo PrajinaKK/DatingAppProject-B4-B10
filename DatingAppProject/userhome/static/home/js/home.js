@@ -1,6 +1,6 @@
 //story section
 let currentScrollPosition = 0;
-let scrollAmount = 320;
+let scrollAmount = 320; //320
 const sCont = document.querySelector(".story-container");
 const hScroll = document.querySelector(".horizontal-scroll");
 const btnScrollLeft = document.querySelector("#btn-scroll-left");
@@ -10,8 +10,9 @@ btnScrollLeft.style.opacity = 0;
 // alert("hScroll.offsetWidth:=",hScroll.offsetWidth);
 let maxScroll = -sCont.offsetWidth + hScroll.offsetWidth; //-612
 
-function scrollHorizontally(val){
-  currentScrollPosition += (val * scrollAmount);
+function scrollHorizontally(val){ //val = 1 and -1
+  
+  currentScrollPosition += (val * scrollAmount);//1.220,2.
   
   sCont.style.left = currentScrollPosition + "px";//-320
   // alert(currentScrollPosition);
