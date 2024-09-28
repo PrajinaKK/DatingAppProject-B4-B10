@@ -5,6 +5,8 @@ from . models import UserPreference
 from accounts.models import User
 
 # Create your views here.
+class StoryView(TemplateView):
+    template_name = "story.html"
 
 class HomeView(ListView):
     model=User
@@ -12,7 +14,7 @@ class HomeView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.request.user
-        
+        context['all_user'] = User.objects.filter(is_superuser=False)
         context['profiles'] = User.objects.filter(location=user.location.id)[1:3]
         context['designation_profiles'] = User.objects.filter(designation=user.designation)[1:3]
         context['qualification_profiles'] = User.objects.filter(qualification=user.qualification)[1:3]
