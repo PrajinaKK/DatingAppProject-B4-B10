@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-kxg7oryz1$@cc_n4goy%vtya!f7a@pl@nersasg-1ig3-)x5fg
 DEBUG = True
 
 ALLOWED_HOSTS = []
-AUTH_USER_MODEL = 'accounts.User'
+
 
 # Application definition
 
@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'rightmenubar',
-    'payment',
-    'userflow',
-    'userhome'
+    # 'payment',
+    # 'userflow',
+    # 'userhome'
 ]
 AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailOrMobileBackend',  # Custom backend

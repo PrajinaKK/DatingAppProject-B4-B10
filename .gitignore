@@ -4,6 +4,7 @@
 ### Database ###
 .vscode/settings.json
 .vscode/
+.vscode
 migrations
 info.txt
 __pycache__

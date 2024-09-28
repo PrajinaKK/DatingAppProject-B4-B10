@@ -24,7 +24,9 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('', include('rightmenubar.urls')),
     path('', include('payment.urls')),
-    path('', include('userflow.urls'))
+    path('', include('userflow.urls')),
+    path('', include('userhome.urls')),
+
 ]
 
 if settings.DEBUG:

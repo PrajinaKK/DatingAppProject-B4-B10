@@ -4,7 +4,7 @@ from.models import User,Interest,Hobbies,Qualification,Location,Multiple_Image
 
 # Register your models here.
 
-admin.site.register(User,UserAdmin)
+admin.site.register(User)
 admin.site.register(Interest)
 admin.site.register(Hobbies)
 admin.site.register(Qualification)

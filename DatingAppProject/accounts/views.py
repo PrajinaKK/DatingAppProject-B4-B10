@@ -29,7 +29,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 class UserJobRelationshipView(TemplateView):
     tempalte_name = 'userDetails.html'
-    success_url = reverse_lazy('/')
+    success_url = reverse_lazy('userhome:entry')
     def get_template_names(self):
         return ['userDetails.html']
 
@@ -98,7 +98,7 @@ class SignupView(FormView):
     form_class = UserForm
     template_name= 'accounts/signup.html'
     
-    success_url=reverse_lazy('accounts:personaldetails')
+    success_url=reverse_lazy('accounts:login')
     
 
     def form_valid(self, form):

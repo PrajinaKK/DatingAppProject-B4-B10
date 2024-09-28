@@ -92,6 +92,9 @@ class User(AbstractUser):
 
     relationship_goals=models.CharField(choices=RELATIONSHIP_CHOICES,max_length=2,blank=True,null=True)
     app = models.CharField(choices=APP_CHOICES,max_length=1,blank=True,null=True)
+
+    shortlisted_users = models.ManyToManyField('self', symmetrical=False, related_name='shortlisted_by_users', blank=True)
+
     
     
     @property
@@ -101,6 +104,10 @@ class User(AbstractUser):
     @property
     def is_jobseeker(self):
         return self.jobtitle is None and self.expertise_level is None
+    
+    @property
+    def shortlisted(self):
+        return self.shortlisted_users.all()
 
 
 class Multiple_Image(models.Model):
