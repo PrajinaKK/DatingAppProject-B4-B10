@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator,MaxValueValidator
-
+from django.utils.text import slugify
+from django.urls import reverse
 
 
 class Location(models.Model):
@@ -59,7 +60,7 @@ class User(AbstractUser):
         ('yes', 'Yes'),
         ('no', 'No'),
     ]
-    
+    slug = models.SlugField(max_length=150,unique=True,blank=True)
     age=models.SmallIntegerField(null=True,
                                 validators=[MinValueValidator(18),MaxValueValidator(34)])
     dob=models.DateField(null=True)
@@ -95,8 +96,15 @@ class User(AbstractUser):
 
     shortlisted_users = models.ManyToManyField('self', symmetrical=False, related_name='shortlisted_by_users', blank=True)
 
-    
-    
+    def save(self,*args,**kwargs):
+        if not self.slug:
+            self.slug = slugify(self.username)
+        super().save(*args,**kwargs) 
+
+    def get_url(self):
+        print('slu: ',self.slug)
+        return reverse('userhome:story',args=[self.slug])
+
     @property
     def is_employer(self):
         return self.company_name is None and self.designation is None

@@ -299,12 +299,12 @@
             </div>
             <span class="user-name">Your story</span>
           </div>
-          {% for story in all_user %}
+          {% for user in all_user %}
           <div class="story">
             <div class="story-circle">
-                <a href="{% url 'userhome:story' %}"><button type="button"><img src="{{story.profile_pic.url}}" alt=""></button></a>
+                <a href="{{user.get_url}}"><button type="button"><img src="{{user.profile_pic.url}}" alt=""></button></a>
             </div>
-            <span class="user-name">{{story.username}}</span>
+            <span class="user-name">{{user.username}}</span>
           </div>
           {% endfor %}
           <!--dummy stories-->
@@ -398,7 +398,7 @@
               <div class="icon"><button type="button"><i class='bx bx-dots-horizontal-rounded'></i></button></div>
             </div>
             <div class="pro-info">
-              <h3 style="font-family: Aldrich sans-serif;font-weight: 400;font-style: normal;">{{profile.username}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 15px;">#{{profile.age}}YRS</span></h3>
+              <h3 style="font-family: Aldrich sans-serif;font-weight: 400;font-style: normal;">{{profile.username}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 15px;"># {{profile.age}} Y R S</span></h3>
               <p>{{profile.jobtitle}}, {{profile.work_location}}</p>
             </div>
           </div>
