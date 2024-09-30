@@ -4,7 +4,11 @@ from.models import User,Interest,Hobbies,Qualification,Location,Multiple_Image
 
 # Register your models here.
 
-admin.site.register(User)
+class UsersAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('username',)}
+    list_display = ['username','slug','profile_pic']
+
+admin.site.register(User,UsersAdmin)
 admin.site.register(Interest)
 admin.site.register(Hobbies)
 admin.site.register(Qualification)

@@ -1,16 +1,31 @@
 from django.shortcuts import render,redirect
-from django.views.generic import TemplateView,ListView
+from django.views.generic import TemplateView,ListView,DetailView
 from django.urls import reverse_lazy
 from . models import UserPreference
 from accounts.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
-class StoryView(TemplateView):
+class StoryView(LoginRequiredMixin,DetailView):
+    model=User
     template_name = "story.html"
+    login_url = '/login/'
+    context_object_name="story"
+    slug_field = 'slug'
+    slug_url_kwarg= 'slug'
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     user = self.request.user
+    #     print('current user: ',user)
+    #     context['story'] = User.objects.get(username=user)
+    #     return context
+    
 
-class HomeView(ListView):
+class HomeView(LoginRequiredMixin,ListView):
     model=User
     template_name = "home.html"
+    login_url = '/login/'
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.request.user
