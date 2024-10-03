@@ -1,0 +1,145 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="main-content">
+    <div class="container-fluid ">
+    
+        <div class="row justify-content-center custom-head align-items-center">
+            <div class="col-auto">
+                <i class="fa-solid fa-magnifying-glass fs-3" id="search-icon" onclick="toggleSearchBar()"></i>
+            </div>
+            <div class="col text-center">
+                <h1 class="text-white mb-0">Subscription Plan</h1>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div id="search-bar" style="display: none; margin-bottom: 20px;">
+            <form method="GET" action="{% url 'rightmenubar:sent_request' %}"  class="d-flex align-items-center">
+                <input type="text" name="q" placeholder="Search users..." class="form-control" />
+                <button type="submit" class="btn btn-primary mt-2">Search</button>
+            </form>
+        </div>
+    
+    <div class="justify-content-center custom-content groups-div">
+        <div class="">
+            <h5 class="text-center">Prime Member</h5>
+            <h5 class="text-center">₹49/-month</h5>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </svg>
+            <b style="margin-left: 10px;">Daily Limits</b>
+            <h6 style="margin-left: 60px;">View up to 15 profiles per day</h6>
+            <h6 style="margin-left: 60px;">Send up to 15 requests per day</h6>
+            <hr>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </svg>
+            <b style="margin-left: 10px;">Weekly Limits</b>
+            <h6 style="margin-left: 60px;">View up to 90 profiles per week</h6>
+            <h6 style="margin-left: 60px;">Send up to 90 requests per week</h6>
+            <hr>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </svg>
+            <b style="margin-left: 10px;">Monthly Limits</b>
+                <li>View up to 300 profiles per month</li>
+                <li>Send up to 300 requests per month</li>
+            <hr>
+
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </svg>
+            <b style="margin-left: 10px;">Premium Features</b>
+                <li>Unlock Unlimited Messages</li>
+                <li>Unlock Shortlist Page</li>
+                <li>View Profiles Who Shortlisted You</li>
+                <li>Sort & filter Profiles</li>
+        </div>
+        
+            <!-- <a href=""><button type="button" id="subbtn">Subscribe</button></a> -->
+            <form id="payment-form">
+                <input type="hidden" id="razorpay_order_id" value="{{ razorpay_order_id }}">
+                <input type="hidden" id="amount" value="{{ amount }}">
+                <button type="button" id="pay-button">Subscribe</button>
+            </form>
+        
+        
+    </div>
+    
+    <div class="rounded-rectangle">
+        <div class="icon-container">
+            <div class="icon-wrapper">
+                <img src="{% static 'image/Home 1.png' %}" alt="Home">
+            </div>
+            <div class="icon-wrapper">
+                <img src="{% static 'image/Discover.png' %}" alt="Discover">
+            </div>
+            <div class="icon-wrapper">
+                <img src="{% static 'image/Gradient.png' %}" alt="Gradient">
+            </div>
+            <div class="icon-wrapper">
+                <img src="{% static 'image/Matches.png' %}" alt="Matches">
+            </div>
+            <div class="icon-wrapper">
+                <img src="{% static 'image/Message.png' %}" alt="Messages">
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+    
+{% endblock content %}
+
+
+{% block scripts %} 
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+
+<script>
+    var options = {
+        "key": "{{ razorpay_key_id }}", // Your API key
+        "amount": "{{ amount }}", // Amount in paise
+        "currency": "{{ currency }}",
+        "name": "Your Website Name",
+        "order_id": "{{ razorpay_order_id }}",
+        "handler": function (response) {
+            // On successful payment
+            $.ajax({
+                url: "{{ callback_url }}",
+                type: "POST",
+                data: {
+                    razorpay_payment_id: response.razorpay_payment_id,
+                    razorpay_order_id: response.razorpay_order_id,
+                    razorpay_signature: response.razorpay_signature
+                },
+                success: function (data) {
+                    alert('Payment successful!');
+                    window.location.href = '/success/';
+                },
+                error: function (error) {
+                    alert('Payment failed. Please try again.');
+                }
+            });
+        },
+        "theme": {
+            "color": "#4B164C"
+        }
+    };
+
+    var rzp1 = new Razorpay(options);
+    document.getElementById('pay-button').onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+    }
+</script>
+{% endblock scripts %}

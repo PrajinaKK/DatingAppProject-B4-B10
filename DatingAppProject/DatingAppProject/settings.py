@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'rightmenubar',
-    # 'payment',
+    'payment',
     # 'userflow',
     # 'userhome'
 ]
@@ -78,6 +78,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'DatingAppProject.wsgi.application'
 
+
+RAZORPAY_KEY_ID = 'rzp_test_9PWZXmd88RGOGY'
+RAZORPAY_KEY_SECRET = 'CMlBW52kdSRZWeoUu5Dlt3Qv'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
