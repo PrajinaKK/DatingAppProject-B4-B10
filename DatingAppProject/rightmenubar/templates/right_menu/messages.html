@@ -128,242 +128,79 @@ window.addEventListener('resize', () => {
 // ------------------------------------------------------------------------------------------
 
 
+let chatSocket = null;
+const senderId = '{{ request.user.id }}';
+let receiverId = null;
+const messageContainer = document.getElementById('messages');
 
-    let chatSocket = null;
-    const senderId = '{{ request.user.id }}';
-    let receiverId = null;
-    const messageContainer = document.getElementById('messages');
+function loadMessages(selectedReceiverId) {
+    // Set the new receiver ID
+    receiverId = selectedReceiverId;
+    
+    // Dynamically generate the room name
+    const roomName = 'chat_' + Math.min(senderId, receiverId) + '_' + Math.max(senderId, receiverId);
 
-    function loadMessages(selectedReceiverId) {
-        // Set the new receiver ID
-        receiverId = selectedReceiverId;
-        console.log(receiverId)
-        
-        // Dynamically generate the room name
-        const roomName = 'chat_' + Math.min(senderId, receiverId) + '_' + Math.max(senderId, receiverId);
-
-        // Close previous WebSocket connection if it exists
-        if (chatSocket) {
-            chatSocket.close();
-        }
-
-        // Connect to the new WebSocket for the selected chat room
-        chatSocket = new WebSocket(
-            'ws://' + window.location.host + '/ws/chat/' + roomName + '/'
-        );
-
-        // Handle incoming messages
-        chatSocket.onmessage = function(e) {
-            const data = JSON.parse(e.data);
-            const messageElement = document.createElement('div');
-            messageElement.innerHTML = `<strong>${data.sender === senderId ? 'You' : 'Them'}:</strong> ${data.message}`;
-            messageContainer.appendChild(messageElement);
-            messageContainer.scrollTop = messageContainer.scrollHeight; // Auto scroll to bottom
-        };
-
-        // Handle WebSocket closure
-        chatSocket.onclose = function(e) {
-            console.error('Chat socket closed unexpectedly');
-        };
-
-        // Handle WebSocket connection errors
-        chatSocket.onerror = function(error) {
-            console.error('WebSocket error:', error);
-            // Optionally, show user-friendly error message
-            messageContainer.innerHTML = '<p>Error connecting to chat. Please try again later.</p>';
-        };
-        
-        // Load any previous messages (this part would require server-side integration)
-        messageContainer.innerHTML = `<p>Loading messages with user ID ${receiverId}...</p>`;
+    // Close previous WebSocket connection if it exists
+    if (chatSocket) {
+        chatSocket.close();
     }
 
-    // Send message via WebSocket
-    document.getElementById('send-btn').onclick = function() {
-        const messageInput = document.getElementById('message-input');
-        const message = messageInput.value;
+    // Connect to the new WebSocket for the selected chat room
+    chatSocket = new WebSocket(
+        'ws://' + window.location.host + '/ws/chat/' + roomName + '/'
+    );
 
-        if (chatSocket && message.trim()) {
-            chatSocket.send(JSON.stringify({
-                'message': message,
-                'sender': senderId,
-                'receiver': receiverId
-            }));
-            messageInput.value = '';  // Clear input after sending
-        }
+    // Handle incoming messages
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const messageElement = document.createElement('div');
+        // messageElement.innerHTML = <strong>${data.sender === senderId ? 'You' : 'Them'}:</strong> ${data.message};
+        messageElement.innerHTML = `<strong>${data.sender === senderId ? 'You' : 'Them'}:</strong> ${data.message}`;
+
+        messageContainer.appendChild(messageElement);
+        messageContainer.scrollTop = messageContainer.scrollHeight; // Auto scroll to bottom
     };
 
-    // Optionally, send message when Enter key is pressed
-    document.getElementById('message-input').addEventListener('keyup', function(e) {
-        if (e.keyCode === 13) {  // Enter key
-            document.getElementById('send-btn').click();  // Trigger send button click
-        }
-    });
+    // Handle WebSocket closure
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
 
-
-
-
-
-
-
-
-// let chatSocket = null;
-// const senderId = '{{ request.user.id }}';
-// let receiverId = null;
-// const messageContainer = document.getElementById('messages');
-
-// function loadMessages(selectedReceiverId) {
-//     // Set the new receiver ID
-//     receiverId = selectedReceiverId;
+    // Handle WebSocket connection errors
+    chatSocket.onerror = function(error) {
+        console.error('WebSocket error:', error);
+        // Optionally, show user-friendly error message
+        messageContainer.innerHTML = '<p>Error connecting to chat. Please try again later. </p>';
+    };
     
-//     // Dynamically generate the room name
-//     const roomName = 'chat_' + Math.min(senderId, receiverId) + '_' + Math.max(senderId, receiverId);
+    // Load any previous messages (this part would require server-side integration)
+    messageContainer.innerHTML = `<p>Loading messages with user ID ${receiverId}...</p>`;
+}
 
-//     // Close previous WebSocket connection if it exists
-//     if (chatSocket) {
-//         chatSocket.close();
-//     }
+// Send message via WebSocket
+document.getElementById('send-btn').onclick = function() {
+    const messageInput = document.getElementById('message-input');
+    const message = messageInput.value;
 
-//     // Connect to the new WebSocket for the selected chat room
-//     chatSocket = new WebSocket(
-//         'ws://' + window.location.host + '/ws/chat/' + roomName + '/'
-//     );
+    // Check if the WebSocket is open and ready to send messages
+    if (chatSocket && chatSocket.readyState === WebSocket.OPEN && message.trim()) {
+        chatSocket.send(JSON.stringify({
+            'message': message,
+            'sender': senderId,
+            'receiver': receiverId
+        }));
+        messageInput.value = '';  // Clear input after sending
+    } else {
+        console.error('WebSocket is not open');
+    }
+};
 
-//     // Handle incoming messages
-//     chatSocket.onmessage = function(e) {
-//         const data = JSON.parse(e.data);
-//         const messageElement = document.createElement('div');
-//         // messageElement.innerHTML = <strong>${data.sender === senderId ? 'You' : 'Them'}:</strong> ${data.message};
-//         messageElement.innerHTML = `<strong>${data.sender === senderId ? 'You' : 'Them'}:</strong> ${data.message}`;
-
-//         messageContainer.appendChild(messageElement);
-//         messageContainer.scrollTop = messageContainer.scrollHeight; // Auto scroll to bottom
-//     };
-
-//     // Handle WebSocket closure
-//     chatSocket.onclose = function(e) {
-//         console.error('Chat socket closed unexpectedly');
-//     };
-
-//     // Handle WebSocket connection errors
-//     chatSocket.onerror = function(error) {
-//         console.error('WebSocket error:', error);
-//         // Optionally, show user-friendly error message
-//         messageContainer.innerHTML = '<p>Error connecting to chat. Please try again later.</p>';
-//     };
-    
-//     // Load any previous messages (this part would require server-side integration)
-//     messageContainer.innerHTML = <p>Loading messages with user ID ${receiverId}...</p>;
-// }
-
-// // Adding the button event handler here:
-// const sendBtn = document.getElementById('send-btn');
-// if (sendBtn) {
-//     sendBtn.onclick = function() {
-//         const messageInput = document.getElementById('message-input');
-//         const message = messageInput.value;
-
-//         if (chatSocket && message.trim()) {
-//             chatSocket.send(JSON.stringify({
-//                 'message': message,
-//                 'sender': senderId,
-//                 'receiver': receiverId
-//             }));
-//             messageInput.value = '';  // Clear input after sending
-//         }
-//     };
-// } else {
-//     console.error("Send button not found");
-// }
-
-// // Optionally, send message when Enter key is pressed
-// document.getElementById('message-input').addEventListener('keyup', function(e) {
-//     if (e.keyCode === 13) {  // Enter key
-//         const sendBtn = document.getElementById('send-btn');
-//         if (sendBtn) {
-//             sendBtn.click();  // Trigger send button click
-//         }
-//     }
-// });
-
-
-
-
-
-
-
-// let chatSocket = null;
-// const senderId = '{{ request.user.id }}';
-// let receiverId = null;
-// const messageContainer = document.getElementById('messages');
-
-// function loadMessages(selectedReceiverId) {
-//     // Set the new receiver ID
-//     receiverId = selectedReceiverId;
-    
-//     // Dynamically generate the room name
-//     const roomName = 'chat_' + Math.min(senderId, receiverId) + '_' + Math.max(senderId, receiverId);
-
-//     // Close previous WebSocket connection if it exists
-//     if (chatSocket) {
-//         chatSocket.close();
-//     }
-
-//     // Connect to the new WebSocket for the selected chat room
-//     chatSocket = new WebSocket(
-//         'ws://' + window.location.host + '/ws/chat/' + roomName + '/'
-//     );
-
-//     // Handle incoming messages
-//     chatSocket.onmessage = function(e) {
-//         const data = JSON.parse(e.data);
-//         const messageElement = document.createElement('div');
-//         // messageElement.innerHTML = <strong>${data.sender === senderId ? 'You' : 'Them'}:</strong> ${data.message};
-//         messageElement.innerHTML = `<strong>${data.sender === senderId ? 'You' : 'Them'}:</strong> ${data.message}`;
-
-//         messageContainer.appendChild(messageElement);
-//         messageContainer.scrollTop = messageContainer.scrollHeight; // Auto scroll to bottom
-//     };
-
-//     // Handle WebSocket closure
-//     chatSocket.onclose = function(e) {
-//         console.error('Chat socket closed unexpectedly');
-//     };
-
-//     // Handle WebSocket connection errors
-//     chatSocket.onerror = function(error) {
-//         console.error('WebSocket error:', error);
-//         // Optionally, show user-friendly error message
-//         messageContainer.innerHTML = '<p>Error connecting to chat. Please try again later. </p>';
-//     };
-    
-//     // Load any previous messages (this part would require server-side integration)
-//     messageContainer.innerHTML = <p>Loading messages with user ID ${receiverId}... </p>;
-// }
-
-// // Send message via WebSocket
-// document.getElementById('send-btn').onclick = function() {
-//     const messageInput = document.getElementById('message-input');
-//     const message = messageInput.value;
-
-//     // Check if the WebSocket is open and ready to send messages
-//     if (chatSocket && chatSocket.readyState === WebSocket.OPEN && message.trim()) {
-//         chatSocket.send(JSON.stringify({
-//             'message': message,
-//             'sender': senderId,
-//             'receiver': receiverId
-//         }));
-//         messageInput.value = '';  // Clear input after sending
-//     } else {
-//         console.error('WebSocket is not open');
-//     }
-// };
-
-// // Optionally, send message when Enter key is pressed
-// document.getElementById('message-input').addEventListener('keyup', function(e) {
-//     if (e.keyCode === 13) {  // Enter key
-//         document.getElementById('send-btn').click();  // Trigger send button click
-//     }
-// });
+// Optionally, send message when Enter key is pressed
+document.getElementById('message-input').addEventListener('keyup', function(e) {
+    if (e.keyCode === 13) {  // Enter key
+        document.getElementById('send-btn').click();  // Trigger send button click
+    }
+});
 
 </script>
 {% endblock scripts %}
