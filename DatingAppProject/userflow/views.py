@@ -3,7 +3,7 @@ from django.views.generic import TemplateView,DetailView
 from accounts.models import User
 
 # Create your views here.
-class ProfileView(TemplateView):
+class ProfileView(DetailView):
     model=User
     template_name='profile.html'
     login_url = '/login/'
@@ -12,5 +12,5 @@ class ProfileView(TemplateView):
     slug_url_kwarg= 'slug'
 
 
-# class ProfileEditView(TemplateView):
-#     template_name='profile.html'
+class ProfileEditView(TemplateView):
+    template_name='editProfile.html'

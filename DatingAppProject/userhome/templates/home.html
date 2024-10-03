@@ -1,4 +1,4 @@
-{% extends 'shared/sidebars.html' %}
+{% extends 'shared/newbase.html' %}
 {% load static %}
 
 
@@ -12,6 +12,15 @@
     --primary-color:#EA9BE0;
     --secondary-color:#6E3767;
     --leftbar-color: #641259;
+    }
+    body{
+      height: fit-content;
+    }
+    .main-content{
+      height: fit-content;
+    }
+    .profile-view{
+      height: fit-content;
     }
     .head-bar{
       display: none;
@@ -64,7 +73,7 @@
       background: linear-gradient(to bottom, rgb(255, 255, 255,0.1), rgb(100, 18, 89,0.6));
     }
     .profile .overlay-text .action-icons {
-      margin-left: 260px;
+      margin-left: 230px;
       float: right;
 
     } 
@@ -77,6 +86,7 @@
     @media screen and (max-width: 455px){
       body{
         width: 500px;
+
       }
 
     }
@@ -404,6 +414,10 @@
           </div>
         </div>
         {% endfor%}
+        
+        
+
+       
         
       </div>
       <div class="profile-container-right">

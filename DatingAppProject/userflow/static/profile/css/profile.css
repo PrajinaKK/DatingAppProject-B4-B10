@@ -229,6 +229,7 @@ html, body {
     gap: 10px;
     text-align: left;
     margin: 5px;
+    flex-direction: row;
 }
 
 .interest-item {
@@ -327,7 +328,7 @@ a{
     }
     .bottom-1{
         /* display: none; */
-        margin: 20px auto 0px;
+        margin: 60px auto 0px;
         width: 250px;
         height: 7px;
     }
