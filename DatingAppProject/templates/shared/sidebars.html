@@ -158,6 +158,10 @@
                 <i class="fas fa-search"></i>
                 <span class="nav-text">Search</span>
             </button>
+            <button class="nav-btn spin-btn">
+                <img src="{% static 'image/Gradient.png' %}" alt="Gradient" style="width: 20px; height: 20px">
+                <span class="nav-text p-2">Spin</span>
+            </button>
         </div>
     </div>
 
@@ -217,14 +221,14 @@
             </div>
             <div class="button-container">
                 <button class="button">My Profile</button>
-                <button class="button">Sent Request</button>
-                <button class="button">Viewed My Profile</button>
-                <button class="button">Accept Request</button>
-                <button class="button">Reject</button>
-                <button class="button">Received</button>
-                <button class="button">Shortlisted By</button>
-                <button class="button">Shortlisted</button>
-                <button class="button">Contacted</button>
+                <a href="{% url 'rightmenubar:sent_request' %}" class="button">Sent Request</a>
+                <a href="{% url 'rightmenubar:viewed_profile' %}" class="button">Viewed My Profile</a>
+                <a href="{% url 'rightmenubar:accept_request' %}" class="button">Accept Request</a>
+                <a href="{% url 'rightmenubar:reject_request' %}" class="button">Reject</a>
+                <a href="{% url 'rightmenubar:recived_request' %}" class="button">Received</a>
+                <a href="{% url 'rightmenubar:shortlisted_by' %}" class="button">Shortlisted By</a>
+                <a href="{% url 'rightmenubar:shortlist' %}" class="button">Shortlisted</a>
+                <a href="{% url 'rightmenubar:contacted' %}" class="button">Contacted</a>
                 <button class="button">Message</button>
                 <button class="button">Settings</button>
             </div>
@@ -248,19 +252,19 @@
     {% block js %}
     {% endblock %}
     <script>
-        let menuToggle = document.querySelector('.menuToggle');
-        menuToggle.onclick = function() {
-            menuToggle.classList.toggle('active');
-        }
-        function toggleInstaFloatingScreen() {
-            const instaMenuContainer = document.querySelector('.insta-floating-screen');
-            const instaOpenIcon = document.querySelector('.insta-menu');
-            const instaCloseIcon = document.querySelector('.insta-close');
+        // let menuToggle = document.querySelector('.menuToggle');
+        // menuToggle.onclick = function() {
+        //     menuToggle.classList.toggle('active');
+        // }
+        // function toggleInstaFloatingScreen() {
+        //     const instaMenuContainer = document.querySelector('.insta-floating-screen');
+        //     const instaOpenIcon = document.querySelector('.insta-menu');
+        //     const instaCloseIcon = document.querySelector('.insta-close');
 
-            instaMenuContainer.classList.toggle('insta-show');
-            instaOpenIcon.classList.toggle('insta-hidden');
-            instaCloseIcon.classList.toggle('insta-hidden');
-        }
+        //     instaMenuContainer.classList.toggle('insta-show');
+        //     instaOpenIcon.classList.toggle('insta-hidden');
+        //     instaCloseIcon.classList.toggle('insta-hidden');
+        // }
     </script>
 </body>
 </html>

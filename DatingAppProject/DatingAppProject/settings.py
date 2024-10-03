@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'accounts',
     'rightmenubar',
     'payment',
-    # 'userflow',
-    # 'userhome'
+    'userflow',
+    'userhome'
 ]
 AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailOrMobileBackend',  # Custom backend

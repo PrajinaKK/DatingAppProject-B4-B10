@@ -16,7 +16,7 @@ from django.db.models import Q
 # sent request.
 class SentRequestView(LoginRequiredMixin, View):
     template_name = 'right_menu/sent_request.html'
-
+    login_url = '/login/'
     def get(self, request, *args, **kwargs):
         # Get the list of users to whom the logged-in user has sent connection requests
         sent_requests = ConnectionRequest.objects.filter(
@@ -35,6 +35,7 @@ class SentRequestView(LoginRequiredMixin, View):
 # accept request.
 class AcceptRequestView(LoginRequiredMixin, View):
     template_name = 'right_menu/accept_request.html'  # Update with your correct template path
+    login_url = '/login/'
 
     def get(self, request, *args, **kwargs):
         # Filter the connection requests where the logged-in user is the sender and the receiver has accepted
@@ -54,6 +55,7 @@ class AcceptRequestView(LoginRequiredMixin, View):
 # reject request.
 class RejectRequestView(View):
     template_name = 'right_menu/reject_request.html'  # Correct path to your template
+    login_url = '/login/'
 
     def get(self, request, *args, **kwargs):
         declined_requests = ConnectionRequest.objects.filter(
@@ -147,7 +149,7 @@ class ShortListedView(LoginRequiredMixin, ListView):
     model = User
     template_name = 'right_menu/shortlist.html'
     context_object_name = 'shortlisted_users'
-
+    login_url = '/login/'
     def get_queryset(self):
         # Get all users that the logged-in user has shortlisted
         return self.request.user.shortlisted.all()
@@ -155,6 +157,7 @@ class ShortListedView(LoginRequiredMixin, ListView):
 
 # remove the shortlisted user.
 class RemoveShortlistedUserView(LoginRequiredMixin, View):
+    login_url = '/login/'
     def post(self, request, pk):
         user_to_remove = get_object_or_404(User, pk=pk)
         request.user.shortlisted_users.remove(user_to_remove)
@@ -173,7 +176,8 @@ class RemoveShortlistedUserView(LoginRequiredMixin, View):
 # shortlisted by users page.
 class ShortListedByView(LoginRequiredMixin, View):
     template_name = 'right_menu/shortlisted_by.html'  # Make sure the template matches your template file name
-
+    login_url = '/login/'
+    
     def get(self, request, *args, **kwargs):
         # Get all users who have shortlisted the currently logged-in user
         shortlisted_by_users = User.objects.filter(shortlisted_users=request.user)

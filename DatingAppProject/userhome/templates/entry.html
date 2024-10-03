@@ -52,9 +52,12 @@
             <div class="entrypopup-content">
                 <div class="wrapper">
                   <p class="head" style="font-size: 25px;font-weight: 700;padding: 10px;">Interested in</p>
-                  <button type="button"><h6 class="men">MEN</h6></button>
-                  <button type="button"><h6 class="women">WOMEN</h6></button>
-                  <button type="button"><h6 class="both">BOTH</h6></button>
+                  <form action="" method="post">
+                    {% csrf_token %}
+                    <button type="submit" name="women" value="women"><h6 class="men">WOMEN</h6></button>
+                    <button type="submit"  name="men" value="men"><h6 class="women">MEN</h6></button>
+                    <button type="submit" name="both" value="both"><h6 class="both">BOTH</h6></button>
+                  </form>  
                 </div>
             </div>
         </div>
