@@ -1,0 +1,84 @@
+{% extends 'shared/newbase.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'profile/css/profile.css' %}">
+{% endblock %}
+
+
+
+    <!-- Main Content Section -->
+    {% block maincontent %}
+        
+        
+    
+        <div class="content-wrapper">
+            <img src="{% static 'profile/img/pro3.jpg' %}">
+            <div class="color-container"></div> 
+            <div class="image-container">
+                <div class="top-bar">
+                    <a href="#">
+                        <div class="back-button-top">
+                            <!-- <span>&lt;</span> -->
+                            <span><i class="fa-solid fa-chevron-left"></i></span>
+                            
+                       </div>
+                    </a>
+                    <a href="#" class="edit-button">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <!-- <i class="fas fa-location-arrow"></i> -->
+                        2.5 km</a>
+                </div>
+                <div class="profile-info">
+                    <h2 id="profileName">Jane Doe, 28</h2>
+                    <p id="profileDetails">Los Angeles, USA</p>
+                </div>
+                <div class="profile-completed-container">
+                    <div class="circular-progress">
+                        <span class="progress-value">0%</span>
+                    </div>
+                    
+                    <div class="profile-completed-text">
+                        Match
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="white-section">
+                <div class="home-indicator"></div>
+               
+                <!-- About Section -->
+                <div class="section-title about-section">About</div>
+                <div class="section-paragraph about-paragraph">
+                    A good listener. I love to having a good talk to know each other's side ❤️.
+                </div>
+                <div class="section-title interest-section">Interests</div>
+                <div class="interest">
+                    <button class="interest-item" style="left: 8px; top: 660px;"><i>🍃 </i> Nature</button>
+                    <div class="interest-item" style="left: 120px; top: 660px;"><i>🌍</i> Travel</div>
+                    <div class="interest-item" style="left: 214.5px; top: 660px;"><i>✍️</i> Writing</div>
+                    <div class="interest-item" style="left: 12.5px; top: 712px;"><i>👫</i> People</div>
+                    <div class="interest-item" style="left: 124.5px; top: 712px;"><i>💪</i> Gym & Fitness</div>
+                </div>
+                <div class="floating-nav-panel-bottom">
+                    <a href="#" class="nav-btn-bottom pass-btn-bottom"><i class="fas fa-times"></i></a>
+                    <a href="#" class="nav-btn-bottom match-btn-bottom"><i class="fas fa-star"></i></a>
+                    <a href="#" class="nav-btn-bottom increase-match-btn-bottom"><i class="fas fa-heart"></i></a>
+                    <a href="#" class="nav-btn-bottom message-btn-bottom6"><i class="fas fa-comment"></i></a>
+                </div>    
+                <div class="home-indicator bottom-1"></div>  
+            </div>     
+            
+           
+    
+        </div>
+  
+           
+    
+    {% endblock maincontent %}
+
+    <!-- Main Content Section -->
+
+    {% block js %}
+    <script src="{% static 'profile/js/profile.js' %}"></script>
+    {% endblock %}

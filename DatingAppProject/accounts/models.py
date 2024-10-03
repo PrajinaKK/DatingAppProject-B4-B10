@@ -102,8 +102,13 @@ class User(AbstractUser):
         super().save(*args,**kwargs) 
 
     def get_url(self):
-        print('slu: ',self.slug)
         return reverse('userhome:story',args=[self.slug])
+    
+    def get_profile(self):
+        return reverse('userflow:profile',args=[self.slug])
+    
+    def get_edit_profile(self):
+        return reverse('userflow:profile_edit',args=[self.slug])
 
     @property
     def is_employer(self):

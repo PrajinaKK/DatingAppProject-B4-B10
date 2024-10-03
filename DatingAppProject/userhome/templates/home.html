@@ -398,27 +398,13 @@
               <div class="icon"><button type="button"><i class='bx bx-dots-horizontal-rounded'></i></button></div>
             </div>
             <div class="pro-info">
-              <h3 style="font-family: Aldrich sans-serif;font-weight: 400;font-style: normal;">{{profile.username}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 15px;"># {{profile.age}} Y R S</span></h3>
+              <h3 style="font-family: Aldrich sans-serif;font-weight: 400;font-style: normal;"><a href="{{profile.get_profile}}">{{profile.username}}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 15px;"># {{profile.age}} Y R S</span></h3>
               <p>{{profile.jobtitle}}, {{profile.work_location}}</p>
             </div>
           </div>
         </div>
         {% endfor%}
-        <!-- <div class="profile">
-          <img src="{% static 'home/img/pro3.jpg' %}" alt="">
-          <div class="overlay-text">
-            <span class="status">Online</span>
-            <div class="action-icons">
-              <div class="icon"><button type="button"><i class="fa-solid fa-thumbs-up"></i></button></div>
-              <div class="icon"><button type="button"><i class='bx bxs-message-rounded'></i></button></div>
-              <div class="icon"><button type="button"><i class='bx bx-dots-horizontal-rounded'></i></button></div>
-            </div>
-            <div class="pro-info">
-              <h3>Sithara Nair</h3>
-              <p>Developer, Hydrabad</p>
-            </div>
-          </div>
-        </div> -->
+        
       </div>
       <div class="profile-container-right">
         <div class="profile">

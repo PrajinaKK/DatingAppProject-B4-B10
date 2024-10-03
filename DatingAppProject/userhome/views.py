@@ -6,6 +6,8 @@ from accounts.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
+
+
 class StoryView(LoginRequiredMixin,DetailView):
     model=User
     template_name = "story.html"
