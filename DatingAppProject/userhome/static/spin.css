@@ -1,0 +1,287 @@
+/* Ensure the font is imported */
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #4B164C;
+    height: 100vh;
+    color: #FFFFFF;
+    background: var(--clr);
+}
+
+.back-button {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    border-radius: 40px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.back-button i {
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 150px;
+    padding: 10px;
+    transform: translateY(-10px);/* Increased margin to move content upward */
+}
+
+ .spinner {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px 0;
+ }
+
+.circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top-color: white;
+    animation: spin 2s linear infinite;
+}
+
+.circle:nth-child(2) {
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    animation-duration: 2.5s;
+}
+
+.circle:nth-child(3) {
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    animation-duration: 3s;
+}
+
+.circle:nth-child(4) {
+    width: 40%;
+    height: 40%;
+    top: 30%;
+    left: 30%;
+    animation-duration: 3.5s;
+}
+
+.circle:nth-child(5) {
+    width: 20%;
+    height: 20%;
+    top: 40%;
+    left: 40%;
+    animation-duration: 4s;
+}
+
+@keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+
+.double-circle {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    /* background: conic-gradient(#DD88CF, #4B164C); */
+    background-color: #DD88CF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.double-circle-inner {
+    width: 101px;
+    height: 101px;
+    border-radius: 50%;
+    background-color: #4B164C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-pic {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+}
+
+.info-text {
+    margin: 5px 0;
+    width: 327px;
+    height: 24px;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 16px;
+    transform: translateY(-10px); /* Move text slightly upward */
+}
+.info-text-t {
+    margin: 5px 0;
+    width: 295px;
+    height: 24px;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 16px;
+    transform: translateY(20px);
+
+
+
+}
+
+.small-rectangle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #DD88CF;
+    color: #FFFFFF;
+    width: 68px;
+    height: 28px;
+    border-radius: 20px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.small-rectangle .double-tick {
+    margin-right: 5px;
+}
+:root{
+    --clr:#4B164C;
+}
+.navigation{
+    position:fixed;
+    display: flex;
+    justify-content:center ;
+    align-items: center ;     /* Fixes the button at the bottom of the page */
+    transform: translateY(260px);
+}
+.menu {
+    position: absolute;
+    bottom: 0;
+    width: 360px;
+    height: 70px;
+    background: #fff;
+    border-radius: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 10px; /* Optional shadow for better visibility */
+}
+
+.menuToggle {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    background: conic-gradient(red, yellow, aqua, lime, fuchsia, red);
+    border: 8px solid var(--clr);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transform: translateY(-35px);
+    box-shadow: 0 0 0 1px #fff;
+}
+
+.menuToggle::before {
+    position: absolute;
+    transition: 1.5s;
+}
+
+.menuToggle.active::before {
+    transform: rotate(225deg);
+}
+
+.menuToggle i {
+    position: absolute;
+    inset: 0;
+}
+
+.menuToggle i::before{
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: -32px;
+    width: 27px;
+    height: 20px;
+    background:transparent;
+    border-top-right-radius: 49px;
+    box-shadow: 3px -6px var(--clr);
+}
+.menuToggle i::after {
+    content: '';
+    position: absolute;
+    top: 22px;
+    right: -32px;
+    width: 27px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 49px;
+    box-shadow: -3px -6px var(--clr);
+    transition: 0.5s;
+}
+
+.menuToggle.active i::before {
+    transform: rotate(45deg);
+    box-shadow: 3px 6px var(--clr); /* Changes direction */
+}
+
+.menuToggle.active i::after {
+    transform: rotate(-45deg);
+    box-shadow: 3px 6px var(--clr); /* Changes direction */
+}
+
+.menuToggle.active {
+    transform: translateY(-10px);
+}
+.text-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 10px; 
+    transform: translateY(20px);
+    font-family: 'Aldrich', sans-serif/* Adjust as needed */
+}
+
+.menu p {
+    margin: 0;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    color: black;
+    
+}
+
+
+/* https://www.shutterstock.com/image-vector/color-wheel-guide-saturation-highlight-colour-picker-1231227460 */

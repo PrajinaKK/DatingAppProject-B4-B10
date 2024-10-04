@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from.models import User,Interest,Hobbies,Qualification,Location,Multiple_Image
+from .models import User,Interest,Hobbies,Qualification,Location,Multiple_Image
 
 # Register your models here.
 
