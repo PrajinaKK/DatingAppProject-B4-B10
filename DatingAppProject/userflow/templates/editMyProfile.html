@@ -1,0 +1,258 @@
+{% extends 'shared/newbase.html' %}
+{% load static %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'profile/css/editmyprofile.css' %}">
+
+<style>
+    body{
+        height: 100%;
+    }
+    .main-content{
+        height: 100%;
+        background-color: #fff;
+        border-radius:0;
+        box-shadow: none;
+    }
+    .home-indicator{
+        margin: 0px auto 20px;
+    }
+    .profile-top-section{
+        width:100%;
+        height: 180px;
+        
+        display:flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+    .profile-infos{
+        width:100%;
+        height: 100px;
+        
+        display: flex;
+        flex-direction: row;
+    }
+    .profile-note{
+        width:100%;
+        height: 80px;
+        padding: 10px 0px 0px 30px;
+        /* background-color: #d49d9d; */
+        text-align: center;
+    }  
+    .pro-image{
+        width: 17%;
+        height: 100px;
+        /* background-color: pink; */
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left:20px ;
+       
+    }  
+    .pro-image img{
+      
+         width: 90px;
+         height: 90px;
+         border-radius: 50%;
+        position: absolute;
+        
+    } 
+    .img-edit{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: rgb(255, 255, 255,0.5);
+        position: relative;
+        border: 2px solid #fff;
+        transform: translate(30px,30px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } 
+    .profile-name{
+        width: 300px;
+        height: 100px;
+        /* background-color: rgb(162, 206, 159); */
+        padding-top: 10px;
+        color: black;
+    }
+    form{
+        padding: 20px;
+    }
+    label{
+        color:rgb(108, 53, 99);
+        font-size: 13px;
+    }
+    .form-control{
+        border: none;
+        border-bottom: 2px solid rgb(99, 42, 92);
+    }
+    .images-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    }
+
+    .small-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+
+    .add-btn {
+        width: 40px;
+        height: 40px;
+        background-color: #4c0070;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .update-btn {
+        background-color: #4c0070;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .update-btn:hover {
+        background-color: #37004c;
+    }
+    .form-control[type=file] {
+    
+    display: none;
+    }
+    form a{
+        color: black;
+    }
+    input[type=file],
+    input[type=checkbox]{
+        display: none;
+    }
+
+
+</style>
+{% endblock %}
+
+
+
+    <!-- Main Content Section -->
+    {% block maincontent %}
+        
+        
+    
+        <div class="content-wrapper">
+            <!-- <img src="{% static 'profile/img/pro3.jpg' %}"> -->
+            <!-- <div class="color-container"></div>  -->
+            <div class="image-container">
+                <div class="top-bar">
+                    <a href="{% url 'userhome:home1' %}">
+                        <div class="back-button-top">
+                            <!-- <span>&lt;</span> -->
+                            <span><i class="fa-solid fa-chevron-left"></i></span>
+                            
+                       </div>
+                    </a>
+                    
+                </div>
+                <div class="profile-info">
+                    <h2 id="profileName">Edit My Profile</h2> 
+                </div>
+                
+            </div>
+            <div class="white-section">
+                <div class="home-indicator"></div>
+                <div class="profile-top-section">
+                    <div class="profile-infos">
+                        <div class="pro-image">
+                            <img src="{{user.profile_pic.url}}">
+                            <div class="img-edit">
+                                <i class="fa-solid fa-pen"></i>
+                            </div>
+                        </div>
+                        <div class="profile-name">
+                            <h2>{{user.username}}</h2>
+                            <p style="color: rgba(0, 0, 0, 0.423);padding-left: 3px;">{{user.bio}}</p>
+                        </div>
+                    </div>
+                    <div class="profile-note">
+                        <p style="color: rgba(0, 0, 0, 0.516);"> All your account information can be accessed and edited here but your mail will still remain unedited</p>
+                    </div>
+                </div>
+                <form method="post" action="{% url 'userflow:myprofile_edit' %}">
+                    {% csrf_token %}
+                    
+                                                            
+                    {{ form.username }}
+                    <label for="username" class="form-label">Username</label><br><br>
+                
+                    
+                    {{ form.email }}
+                    <label for="companyname" class="form-label">email</label><br><br>
+                 
+                                                            
+                    {{ form.phone_number }}
+                   <label for="companyname" class="form-label">Phone Number</label><br><br>
+              
+                   
+                    {{ form.bio }}
+                    <label for="companyname" class="form-label">Bio</label><br><br>
+
+                    <p style="color: #37004c;">{{form.errors}}</p>
+                
+                    <label for="images">Images</label><br><br>
+                    
+                        {{image_form.multiple_image}}
+                        <div class="images-group">
+                            <img src="{{ form.instance.profile_pic.url }}" alt="Current Image" style="width: 40px; height: 40px;border-radius: 50%;">
+                            
+
+                            <button type="button" class="add-btn"  onclick="document.getElementById('id_multiple_image').click();">+</button>
+                        </div><br>
+                    <label for="reels">Reels</label><br><br>
+                        {{form.short_reel}}
+                        <button type="button" class="add-btn"  onclick="document.getElementById('id_short_reel').click();">+</button><br><br>
+                    
+
+                    <div class="form-group">
+                        <a href="#"><label for="password">Change Password</label></a>
+                    </div>
+
+                    <button type="submit" class="update-btn">Update</button>    
+                    
+                     
+                </form>
+                
+
+
+               
+                <div class="floating-nav-panel-bottom">
+                    <a href="#" class="nav-btn-bottom pass-btn-bottom"><i class="fas fa-times"></i></a>
+                    <a href="#" class="nav-btn-bottom match-btn-bottom"><i class="fas fa-star"></i></a>
+                    <a href="#" class="nav-btn-bottom increase-match-btn-bottom"><i class="fas fa-heart"></i></a>
+                    <a href="#" class="nav-btn-bottom message-btn-bottom6"><i class="fas fa-comment"></i></a>
+                </div>      
+                <div class="home-indicator bottom-1"></div>  
+            </div>     
+            
+           
+    
+        </div>
+  
+           
+    
+    {% endblock maincontent %}
+
+    <!-- Main Content Section -->
+
+    

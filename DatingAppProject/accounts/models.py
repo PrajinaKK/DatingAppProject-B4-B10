@@ -10,28 +10,29 @@ class Location(models.Model):
     CITY_CHOICES = (('KNR','Kannur'),('KH','Kochi'))
     city = models.CharField(max_length=3,choices=CITY_CHOICES)
     def __str__(self):
-        return self.city
+        return self.get_city_display()
 
 class Interest(models.Model):
     id=models.AutoField(primary_key=True)
     INTEREST_CHOICES = (('NR','Nature'),('TL','Travel'),('WR','Writing'),('AT','ART'),('PL','People'),('GF','Gym&Fitness'),('MC','Music'))
     interest = models.CharField(max_length=2,choices=INTEREST_CHOICES)
+     
     def __str__(self):
-        return self.interest    
+        return self.get_interest_display() 
     
 class Hobbies(models.Model):
     id=models.AutoField(primary_key=True)
     HOBBY_CHOICES = (('CK','Cooking'),('TLG','Traveling'),('RD','Reading'),('DC','Dancing'),('GM','Gaming'))
     hobby = models.CharField(max_length=3,choices=HOBBY_CHOICES)
     def __str__(self):
-        return self.hobby
+        return self.get_hobby_display() 
        
 class Habbit(models.Model):
     id=models.AutoField(primary_key=True)
     HABBIT_CHOICES = (('R','Regularly'),('O','Occasionally'),('Q','Quitting'),('N','Never'))
     habit=models.CharField(choices=HABBIT_CHOICES,max_length=1) 
     def __str__(self):
-        return self.habit   
+        return self.get_habit_display()    
 
 
 class Qualification(models.Model):
@@ -40,7 +41,7 @@ class Qualification(models.Model):
     qualification=models.CharField(choices=QUALIFICATION_CHOICES,max_length=3)
 
     def __str__(self):
-        return self.qualification
+        return self.get_qualification_display() 
 
 
 
@@ -96,14 +97,21 @@ class User(AbstractUser):
 
     shortlisted_users = models.ManyToManyField('self', symmetrical=False, related_name='shortlisted_by_users', blank=True)
 
+    bio = models.CharField(max_length=100, blank=True, default='no user bio yet.')
+
     def save(self,*args,**kwargs):
         if not self.slug:
             self.slug = slugify(self.username)
         super().save(*args,**kwargs) 
 
     def get_url(self):
-        print('slu: ',self.slug)
         return reverse('userhome:story',args=[self.slug])
+    
+    def get_profile(self):
+        return reverse('userflow:profile',args=[self.slug])
+    
+    # def get_edit_profile(self):
+    #     return reverse('userflow:profile_edit',args=[self.slug])
 
     @property
     def is_employer(self):

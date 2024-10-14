@@ -17,6 +17,8 @@ body {
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     position: fixed;
+    top:0;
+    left:0;
     height: 100%;
     overflow: hidden; /* Prevent overflow */
 }
@@ -24,15 +26,18 @@ body {
 .main-content {
     margin-left: 340px; /* Left margin adjusted for the sidebar with some extra space */
     margin-right: 340px; /* Right margin adjusted for the right sidebar with some extra space */
-    padding: 20px;
-    /* display: flex;
+    padding: 15px;
+    display: flex;
+    position: absolute;
+    z-index:2;
     flex-direction: column;
     align-items: center;
-    justify-content: center; */
-    /* width: calc(100% - 680px);  */
-    background-color: #f5f5f5; /* Light background color for contrast */
+    justify-content: center;
+    width: calc(100% - 680px); /* Full width minus both sidebars and the extra margins */
+     /* Light background color for contrast */
     border-radius: 10px; /* Rounded corners for better aesthetics */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for emphasis */
+
 }
 .back-button {
     position: absolute;
@@ -136,52 +141,7 @@ body {
     align-items: center; 
     transform: translateY(140px);
 }
-/*--------------------------floatin notification---------------------------------------------*/
-.floating-notification{
-    /* height: 600px;
-    width: 100%; */
-    background-color: transparent;
-    /* z-index: 0; */
-    transform: scaleY(0);
-    display: none;
-    flex-direction: column;
-    transform-origin: top; 
-    transition: transform 0.5s;
-    margin-top: 80px;
-    display: flex;
-    gap:15px;
-    align-items: center;
-    position: fixed;
-    
-}
 
-/*The position: fixed; property is used to make the notification appear over the content, without affecting the
- layout of the underlying app.z-index: 1000; ensures the notification is on top. The display: none; 
- keeps the notification hidden by default.*/
-
-.floating-notification.show{
-    transform: scaleY(1);
-    height: 600px;
-    width: 100%;
-    z-index: 9999;
-    position: fixed;
-    top:-5px;
-}
-.news{
-    height: 170px;
-    background-color: #fff;
-    border-radius: 20px;
-    width: 500px;
-    background-color: rgba(75, 22, 76, 0.9);
-}
-.floating-notification .message{
-    height: 100px;
-    background-color: #fff;
-    border-radius: 20px;
-    width: 500px;
-    background-color: rgba(75, 22, 76, 0.9);
-}
-/*--------------------------floatin notification---------------------------------------------*/
 
 /* 
 .menuToggle {
@@ -311,7 +271,7 @@ a {
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Deeper box shadow for floating effect */
     margin-bottom: 10px; 
-    padding-left: 15px; /* Add padding to the left for spacing */
+    padding-left: 10px; /* Add padding to the left for spacing */
     transition: all 0.3s ease; /* Smooth transition for hover and click */
  }
  
@@ -357,7 +317,10 @@ a {
  .nav-btn.search-btn {
     background-color: #0798e7;
  }
- 
+ .nav-btn.spin-btn {
+    padding-right: 100px;
+ }
+
  .nav-btn:focus {
     outline: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -399,7 +362,6 @@ a {
 .profile-section {
     display: flex;
     align-items: center;
-    
     margin-top: 19px;
     margin-left: 12px; /* Reduced margin for compactness */
     width: 100%; /* Full width */
@@ -499,16 +461,7 @@ a {
 }
 
 /* Adjust Main Content for Left and Right Sidebars */
-.main-content {
-    margin-left: 320px; /* Left sidebar width */
-    margin-right: 320px; /* Right sidebar width including margin left */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: calc(100% - 640px); /* Full width minus sidebars and margins */
-}
+
 .button-container {
     display: flex;
     flex-direction: column;
@@ -584,22 +537,32 @@ a {
     color: #FFFFFF; /* Text color when pressed */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Shadow on press */
     transform: scale(0.95); /* Slightly smaller button on press */
-} 
-
-/*----------------------------RESPONSIVE---------------------------------------*/
-@media screen and (max-width: 766px){
-    .sidebar{
-        display: none;
-    }
-    .right-sidebar{
-        display: none;
-    }
-   
+}
+/* General styles for all screen sizes */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
 }
 
-@media screen and (min-width: 766px){
+/* Hide sidebar, right-sidebar, and floating navigation on mobile */
+@media only screen and (max-width: 768px) {
+    .sidebar,
+    .right-sidebar,
+    .floating-nav-panel {
+        display: none; /* Hide on mobile */
+    }
 
+    /* Ensure main content occupies full width */
+    .main-content {
+        width: 100%;
+        padding: 20px; /* Optional padding for mobile */
+    }
+
+    /* Optional: Make buttons larger or text more readable on mobile */
+    .nav-btn {
+        font-size: 1.2rem; /* Increase button text size */
+    }
 }
 
-
-/*----------------------------RESPONSIVE---------------------------------------*/

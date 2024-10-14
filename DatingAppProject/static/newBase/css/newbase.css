@@ -22,17 +22,15 @@ body {
 }
 
 .main-content {
-    margin-left: 340px; /* Left margin adjusted for the sidebar with some extra space */
-    margin-right: 340px; /* Right margin adjusted for the right sidebar with some extra space */
+    margin-left: 340px; 
+    margin-right: 340px; 
     padding: 20px;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
-    /* width: calc(100% - 680px);  */
-    background-color: #f5f5f5; /* Light background color for contrast */
-    border-radius: 10px; /* Rounded corners for better aesthetics */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for emphasis */
+    position: relative;
+    width: 100%; 
+    background-color: #f5f5f5; 
+    border-radius: 10px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+    height: 100%;
 }
 .back-button {
     position: absolute;
@@ -152,7 +150,7 @@ body {
     gap:15px;
     align-items: center;
     position: fixed;
-    
+    z-index: 1000;
 }
 
 /*The position: fixed; property is used to make the notification appear over the content, without affecting the
@@ -163,7 +161,7 @@ body {
     transform: scaleY(1);
     height: 600px;
     width: 100%;
-    z-index: 9999;
+    z-index: 1000;
     position: fixed;
     top:-5px;
 }
@@ -183,71 +181,7 @@ body {
 }
 /*--------------------------floatin notification---------------------------------------------*/
 
-/* 
-.menuToggle {
-    position: relative;
-    width: 65px;
-    height: 65px;
-    background: conic-gradient(red, yellow, aqua, lime, fuchsia, red);
-    border: 8px solid var(--clr);
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    transform: translateY(-35px);
-    box-shadow: 0 0 0 1px #fff;
-}
 
-.menuToggle i {
-    position: absolute;
-    inset: 0;
-}
-
-.menuToggle i::before,
-.menuToggle i::after {
-    content: '';
-    position: absolute;
-    width: 27px;
-    height: 20px;
-    background: transparent;
-    border-radius: 49px;
-    box-shadow: 3px -6px var(--clr);
-    transition: 0.5s;
-} */
-/* 
-.menuToggle.active i::before {
-    transform: rotate(45deg);
-    box-shadow: 3px 6px var(--clr); 
-}
-
-.menuToggle.active i::after {
-    transform: rotate(-45deg);
-    box-shadow: 3px 6px var(--clr); 
-}
-
-.menuToggle.active {
-    transform: translateY(-10px);
-}
-
-.text-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding-bottom: 10px; 
-    transform: translateY(20px);
-    font-family: 'Aldrich', sans-serif;
-}
-
-.menu p {
-    margin: 0;
-    font-size: 18px;
-    text-align: center;
-    width: 100%;
-    color: black;
-} */
 
 .btn1 {
     color: white;
@@ -499,16 +433,7 @@ a {
 }
 
 /* Adjust Main Content for Left and Right Sidebars */
-.main-content {
-    margin-left: 320px; /* Left sidebar width */
-    margin-right: 320px; /* Right sidebar width including margin left */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: calc(100% - 640px); /* Full width minus sidebars and margins */
-}
+
 .button-container {
     display: flex;
     flex-direction: column;
@@ -594,7 +519,6 @@ a {
     .right-sidebar{
         display: none;
     }
-   
 }
 
 @media screen and (min-width: 766px){

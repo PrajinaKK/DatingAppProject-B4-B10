@@ -1,0 +1,209 @@
+:root{
+    --dark-color:#5b0d50;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Aldrich", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+body{
+    height: 100%;
+}
+.main-content{
+    height: 100%;
+}
+
+/*-----------------------PROFILE PART------------------------------*/
+
+/* Ensure the white section stays at the bottom */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width:100%;/*5. width should be 100%*/
+    position: relative;/*2.content-wrapper position should be relative*/
+    background-color: #4B164C;
+}
+
+
+.image-container{
+    position: relative;            
+    width: 100%;
+    height: 200px;
+    flex:1;
+    background-color: transparent;
+    
+}
+/* White section at the bottom */
+.white-section {
+    background-color: #fff;
+    height: 580px; /* Adjust as needed */
+    /* text-align: center; */
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    
+}
+.top-bar {
+    position: absolute;
+    top: 30px;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    /* width: 100%; */
+}
+.top-bar a{
+    text-decoration: none;
+}
+
+.back-button-top {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.4); /* Stroke effect with 40% opacity */
+    border-radius: 50%; /* Make it circular */
+    background: rgba(255, 255, 255, 0.2); /* Fill color with 20% opacity */
+    backdrop-filter: blur(1px); /* Background blur effect */
+}
+
+.back-button-top span {
+    font-size: 20px;
+    color: white;
+}
+
+
+.profile-info {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 2;
+    
+    
+}
+
+.profile-info h2 {
+    font-size: 32px;
+    font-family: 'Aldrich', sans-serif;
+    margin: 0;
+    width: 313px;
+    height: 40px;
+    line-height: 40px; /* Ensures vertical alignment */
+}
+
+
+
+
+
+.home-indicator {
+    width: 120px;
+    height: 5px;
+    background-color: #ddd;
+    border-radius: 2.5px;
+    margin: 0px auto 40px;
+}
+
+
+
+
+.floating-nav-panel-bottom {
+    width: 80%;
+    height: 71px;
+    background-color: #FFFFFF;
+    border-radius: 35.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 47px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10;
+}
+
+.nav-btn-bottom {
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+    background-color: #FF6B6B;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn-bottom.pass-btn-bottom {
+    background-color: rgba(225, 8, 8, 0.3); /* 30% opacity red for Pass button */
+}
+
+.nav-btn-bottom.match-btn-bottom {
+    background-color: #4B164C; /* Dark purple for Match button */
+}
+
+.nav-btn-bottom.increase-match-btn-bottom {
+    background-color: #DD88CF; /* Pink for Increase Match button */
+}
+
+.nav-btn-bottom.message-btn-bottom {
+    background-color: #4b52bd; /* Dark blue for Comment button */
+}
+
+.nav-btn-bottom:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+a{
+    text-decoration: none;
+}
+/*-----------------------PROFILE PART------------------------------*/
+
+/*-----------------------RESPONSIVE------------------------------*/
+@media  screen and (max-width:766px) {
+            
+    .main-content {
+        margin-left: 0px; 
+        margin-right: 0px;
+        padding: 0;
+        width: 100%;
+    }
+   
+    .floating-nav-panel-bottom {
+        bottom: 10px;
+        position: fixed;
+    }
+    .bottom-1{
+        display: none;
+    }
+    
+}
+@media  screen and (min-width:766px) {
+    .floating-nav-panel-bottom {
+        display: none;
+    }
+    .bottom-1{
+        /* display: none; */
+        margin: 60px auto 0px;
+        width: 250px;
+        height: 7px;
+    }
+   
+}
+
+/*-----------------------RESPONSIVE------------------------------*/
+

@@ -8,11 +8,11 @@ from django.contrib.auth.password_validation import validate_password
 
 class UserForm(forms.ModelForm):
     username=forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','type' : 'text'}))
-    
     email=forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control','type' : 'email'}))
     phone_number=forms.IntegerField(validators=[RegexValidator(r'^\+?1?\d{9,15}$', 'Enter a valid phone number (up to 10 digits)')],widget=forms.NumberInput(attrs={'class':'form-control','type' : ''}))
     password=forms.CharField(max_length=25,min_length=8,widget=forms.PasswordInput(attrs={'class':'form-control','type' : 'password'}))
     confirm_password=forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control','type' : 'password'}))
+   
     class Meta:
         model = User
         fields = ['username','email','phone_number','password','confirm_password']

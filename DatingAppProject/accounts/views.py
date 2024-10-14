@@ -98,7 +98,7 @@ class SignupView(FormView):
     form_class = UserForm
     template_name= 'accounts/signup.html'
     
-    success_url=reverse_lazy('accounts:login')
+    success_url=reverse_lazy('accounts:personaldetails')
     
 
     def form_valid(self, form):
@@ -130,7 +130,7 @@ class SignupView(FormView):
 class LoginView(AuthLoginView):
     template_name = 'accounts/login.html'
     form_class = EmailOrMobileAuthenticationForm
-    success_url = reverse_lazy('accounts:personaldetails')
+    success_url = reverse_lazy('userhome:home1')
 
     def form_valid(self, form):
         user = form.get_user()
