@@ -1,6 +1,6 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +11,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
-    
-
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    {% block head %}
+    {% endblock head %}
 </head>
 <body>
     <!-- Sidebar Section -->
@@ -67,26 +66,60 @@
                 <i class="fas fa-search"></i>
                 <span class="nav-text">Search</span>
             </button>
+            <a href="" >
             <button class="nav-btn spin-btn">
-                <img src="{% static 'image/Gradient.png' %}" alt="Gradient" style="width: 20px; height: 20px">
-                <span class="nav-text p-2">Spin</span>
+                <i class="fas fa-sync"></i>
+                <span class="nav-text">Spin</span>
             </button>
+            </a>
         </div>
     </div>
 
     <!-- Main Content Section -->
-    {% block content %}
-            
-    {% endblock content %}
+     
+    <div class="main-content">
+
+        {% block content %}
+        {% endblock content %}
 
 
+    </div>
+        <!-- <button class="back-button">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+
+        <div class="profile-container">
+            <p class="info-text">1 km near you</p>
+
+            <div class="double-circle">
+                <div class="double-circle-inner">
+                    <img src=" " alt="Profile Pic" class="profile-pic">
+                </div>
+            </div>
+
+            <p class="info-text-t">Sona - 27</p>
+
+            <div class="small-rectangle">
+                <span class="double-tick">✔✔</span> Like
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <div class="menuToggle"><i></i></div>
+            <div class="menu">
+                <div class="text-wrapper">
+                    <p>Spin Here</p>
+                </div>
+            </div>
+        </div>
+    </div> -->
     <!-- Right Sidebar Section -->
     <div class="right-sidebar">
         <div class="right-container">
             <div class="profile-section">
                 <div class="double-circle-right">
                     <div class="double-circle-inner-right">
-                        <img class="profile-pic-right" src="anime-male-avatar_950633-895.avif" alt=" ">
+                        <img class="profile-pic-right" src="{% static 'img.png' %}" alt=" ">
                     </div>
                 </div>
                 <div class="text-info-right">
@@ -100,19 +133,18 @@
                 </div>
             </div>
             <div class="button-container">
-                <a href="#" class="button">My Profile</a>
-                <a href="{% url 'rightmenubar:sent_request' %}" class="button">Sent Request</a>
-                <a href="{% url 'rightmenubar:viewed_profile' %}" class="button">Viewed My Profile</a>
-                <a href="{% url 'rightmenubar:accept_request' %}" class="button">Accept Request</a>
-                <a href="{% url 'rightmenubar:reject_request' %}" class="button">Reject</a>
-                <a href="{% url 'rightmenubar:recived_request' %}" class="button">Received</a>
-                <a href="{% url 'rightmenubar:shortlisted_by' %}" class="button">Shortlisted By</a>
-                <a href="{% url 'rightmenubar:shortlist' %}" class="button">Shortlisted</a>
-                <a href="{% url 'rightmenubar:contacted' %}" class="button">Contacted</a>
-                <a href="#" class="button">Message</a>
-                <a href="#" class="button">Settings</a>
+                <button class="button">My Profile</button>
+                <button class="button">Sent Request</button>
+                <button class="button">Viewed My Profile</button>
+                <button class="button">Accept Request</button>
+                <button class="button">Reject</button>
+                <button class="button">Received</button>
+                <button class="button">Shortlisted By</button>
+                <button class="button">Shortlisted</button>
+                <button class="button">Contacted</button>
+                <button class="button">Message</button>
+                <button class="button">Settings</button>
             </div>
-
             <div class="logout-button-container">
                 <button class="logout-button">
                     <i class="fas fa-sign-out-alt"></i> Logout
@@ -144,9 +176,7 @@
             instaCloseIcon.classList.toggle('insta-hidden');
         }
     </script>
-
     {% block scripts %}
-            
     {% endblock scripts %}
 </body>
 </html>

@@ -22,20 +22,20 @@
             <div class="color-container"></div> 
             <div class="image-container">
                 <div class="top-bar">
-                    <a href="#">
+                    <a href="{% url 'userhome:home1' %}">
                         <div class="back-button-top">
                             <!-- <span>&lt;</span> -->
                             <span><i class="fa-solid fa-chevron-left"></i></span>
                             
                        </div>
                     </a>
-                    <a href="#" class="edit-button">
+                    <a href="{% url 'userflow:myprofile_edit' %}" class="edit-button">
                         
                         edit</a>
                 </div>
                 <div class="profile-info">
-                    <h2 id="profileName">Jane Doe, 28</h2>
-                    <p id="profileDetails">Los Angeles, USA</p>
+                    <h2 id="profileName">{{profile.username}}, {{profile.age}}</h2>
+                    <p id="profileDetails">{{profile.location.get_city_display}}, INDIA</p>
                 </div>
                 <div class="profile-completed-container">
                     <div class="circular-progress">
@@ -54,15 +54,17 @@
                 <!-- About Section -->
                 <div class="section-title about-section">About</div>
                 <div class="section-paragraph about-paragraph">
-                    A good listener. I love to having a good talk to know each other's side ❤️.
+                    <!-- A good listener. I love to having a good talk to know each other's side ❤️. -->
+                     {{profile.bio}}
                 </div>
                 <div class="section-title interest-section">Interests</div>
                 <div class="interest">
-                    <button class="interest-item" style="left: 8px; top: 660px;"><i>🍃 </i> Nature</button>
+                    <button class="interest-item"><i>🍃 </i> {{profile.interest.get_interest_display}}</button>
+                    <!-- <button class="interest-item" style="left: 8px; top: 660px;"><i>🍃 </i> Nature</button>
                     <div class="interest-item" style="left: 120px; top: 660px;"><i>🌍</i> Travel</div>
                     <div class="interest-item" style="left: 214.5px; top: 660px;"><i>✍️</i> Writing</div>
                     <div class="interest-item" style="left: 12.5px; top: 712px;"><i>👫</i> People</div>
-                    <div class="interest-item" style="left: 124.5px; top: 712px;"><i>💪</i> Gym & Fitness</div>
+                    <div class="interest-item" style="left: 124.5px; top: 712px;"><i>💪</i> Gym & Fitness</div> -->
                 </div>
                 <div class="floating-nav-panel-bottom">
                     <a href="#" class="nav-btn-bottom pass-btn-bottom"><i class="fas fa-times"></i></a>

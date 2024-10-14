@@ -1,0 +1,120 @@
+{% extends 'shared/newbase.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'Matches/css/viewed copy.css' %}">
+    <style>
+        .filter-icon{
+            display: none;
+        }
+        .main-content{
+            height: fit-content;
+        }
+        .profile-name {
+            font-size: 16px;
+            margin-right: 8px;
+        }
+    </style>
+{% endblock %}
+
+{% block  maincontent %}
+
+   
+   <div class="container  my-4 rounded">
+      <div class="navdiv">
+
+        <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 text-center g-3">
+            <div class="iconNav slider-icon">
+                <a href="{% url 'userhome:home1' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+                </a>
+            </div>
+        </div>
+        
+
+          <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 text-center g-3">
+              <h2>Matches</h2>
+          </div>
+
+          <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 text-center g-3">
+            <div class="iconNav slider-icon filter-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" viewBox="0 0 16 16">
+                    <path d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05z" />
+                </svg>
+                
+            </div>
+        </div>
+        
+        
+      </div>
+  </div>
+
+  <div class="container">
+    <h3 class="my-3 heading" style="color: rgb(93, 14, 77);">Your Matches <span style="color:rgb(208, 137, 189)">{{match_count}}</span></h3>
+    <div class="row" style="margin-bottom: 150px;">
+
+        {% for match in matches %}
+        <div class="col-md-3">
+            <div class="card">
+                <img src="{{ match.user.profile_pic.url}}" alt="Card Image" class="card-image">
+                <div class="gradient-overlay"></div>
+                <div class="match-info">{{match.match_percentage}}% match</div>
+                <div class="distance-info">1.3 km away</div>
+                <div class="profile-info">
+                    <div class="name-status">
+                        <span class="profile-name">{{match.user.username}}, {{match.user.age}}</span>
+                        <span class="status-dot"></span>
+                    </div>
+                    <div class="place-name">{{match.user.location}}</div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+      
+
+
+<div class="rounded-rectangle">
+    <div class="icon-container">
+        <div class="icon-wrapper">
+            <!-- Home Icon -->
+            <span class="material-symbols-outlined">
+                home
+                </span>
+        </div>
+        <div class="icon-wrapper">
+            <!-- Navigation Icon -->
+            <span class="material-symbols-outlined">
+                explore
+                </span>
+        </div>
+        <div class="icon-wrapper">
+            <!-- Replace Spin Icon with Sphere -->
+            <div class="menuToggle">
+                <!-- Sphere -->
+            </div>
+        </div>
+        <div class="icon-wrapper">
+            <!-- Contact Icon -->
+            <span class="material-symbols-outlined">
+                group
+                </span>
+        </div>
+        <div class="icon-wrapper">
+            <span class="material-symbols-outlined">
+                chat_bubble
+                </span>
+        </div>
+        
+    </div>
+    
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
+

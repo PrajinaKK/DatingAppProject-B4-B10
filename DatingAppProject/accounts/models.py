@@ -97,6 +97,8 @@ class User(AbstractUser):
 
     shortlisted_users = models.ManyToManyField('self', symmetrical=False, related_name='shortlisted_by_users', blank=True)
 
+    bio = models.CharField(max_length=100, blank=True, default='no user bio yet.')
+
     def save(self,*args,**kwargs):
         if not self.slug:
             self.slug = slugify(self.username)

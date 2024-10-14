@@ -10,6 +10,8 @@ urlpatterns = [
     path('home/', HomeView.as_view(),name="home1"),
     path('entry',EntryView.as_view(),name="entry"),
     path('story/<slug:slug>/',StoryView.as_view(),name="story"),
+    path('matches/',MatchesView.as_view(),name="yourmatches"),
+    path('spin', SpinView.as_view(), name='spin')
     
 ]  
 if settings.DEBUG:
